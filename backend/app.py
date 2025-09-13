@@ -5,6 +5,9 @@ app = Flask(__name__)
 # Allow all origins for dev; tighten in production
 CORS(app)
 
+from services.aqi_service import fetch_aqi
+from services.weather_service import fetch_weather
+
 # --- Mock data (Jaipur-focused) ---
 RECOMMENDATIONS = [
     {
@@ -61,13 +64,34 @@ def get_recommendations():
 
 @app.get("/api/environmental")
 def get_environmental():
-    # Mock values; replace with IMD + Jaipur Smart City sensor integrations
-    return jsonify({
-        "location": "jaipur",
-        "aqi": 92,
-        "tempC": 33,
-        "weather": "Sunny"
-    })
+    """
+    Unified endpoint that returns AQI, temperature and weather description
+    for a given city. Example: /api/environmental?location=mumbai
+    """
+    location = request.args.get("location")
+    if not location:
+        return jsonify({"error": "location parameter required"}), 400
+    try:
+        aqi = fetch_aqi(location)["data"]
+
+        lat, lon = aqi["city"]["geo"]
+        weather_info = fetch_weather(lat, lon)
+        return jsonify({
+            "city": location,
+            "aqi": aqi["aqi"],
+            "tempC": weather_info["tempC"],
+            "weather": weather_info["weather"]
+        })
+    except KeyError as ke:
+        # Raised by utils.get_coords for unknown city
+        return jsonify({"error": str(ke)}), 400
+    except RuntimeError as re:
+        # Propagated from service functions
+        return jsonify({"error": str(re)}), 502
+    except Exception as e:
+        # Catch‑all for unexpected errors
+        return jsonify({"error": "Unexpected error", "details": str(e)}), 500
+
 
 @app.get("/api/user/<user_id>/milestones")
 def get_user_milestones(user_id):
