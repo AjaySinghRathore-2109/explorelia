@@ -82,9 +82,6 @@ def get_environmental():
             "tempC": weather_info["tempC"],
             "weather": weather_info["weather"]
         })
-    except KeyError as ke:
-        # Raised by utils.get_coords for unknown city
-        return jsonify({"error": str(ke)}), 400
     except RuntimeError as re:
         # Propagated from service functions
         return jsonify({"error": str(re)}), 502

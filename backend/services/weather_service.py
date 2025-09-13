@@ -1,5 +1,4 @@
 import requests
-from .utils import get_coords
 from .config import OPEN_METEO_BASE_URL
 
 def fetch_weather(lat, lon) -> dict:
@@ -16,7 +15,7 @@ def fetch_weather(lat, lon) -> dict:
         cw = data.get("current_weather")
         if not cw:
             raise RuntimeError("Open-Meteo returned no current_weather data")
-        # Map weathercode to a human‑readable description (partial list)
+
         weather_code = cw.get("weathercode")
         weather_map = {
             0: "Clear sky",
@@ -28,7 +27,6 @@ def fetch_weather(lat, lon) -> dict:
             51: "Light drizzle",
             61: "Light rain",
             80: "Rain showers",
-            # Extend as needed
         }
         weather_desc = weather_map.get(weather_code, f"Code {weather_code}")
         return {
