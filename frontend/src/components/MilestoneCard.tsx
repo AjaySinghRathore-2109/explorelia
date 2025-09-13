@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import axios from 'axios'
+import './MilestoneCard.css';
 
 type MilestoneType = {
   title: string
@@ -11,32 +13,24 @@ const MilestoneCard: React.FC = () => {
   const [milestone, setMilestone] = useState<MilestoneType | null>(null)
 
   useEffect(() => {
-    axios.get('/api/user/1/milestones').then(res => setMilestone(res.data.current))
+    axios.get('/api/user/1/milestones').then(res => {
+      console.log(res.data)
+      setMilestone(res.data.current)
+    })
   }, [])
 
   return (
-    <section className="container" style={{ marginTop: 28 }}>
+    <section className="container milestone-section">
       <div className="card">
         <div className="badge">Sustainability</div>
-        <h4 style={{ marginTop: 8 }}>{milestone?.title ?? 'Loading…'}</h4>
-        <p style={{ color: 'var(--muted)', marginTop: 6 }}>
+        <h4 className="milestone-title">{milestone?.title ?? 'Loading…'}</h4>
+        <p className="milestone-description">
           {milestone?.description ?? 'Fetching your progress…'}
         </p>
-        <div style={{
-          background: 'var(--surface)',
-          border: '1px solid var(--border)',
-          borderRadius: 10,
-          height: 10,
-          marginTop: 8,
-          overflow: 'hidden'
-        }}>
-          <div style={{
-            width: `${milestone?.progressPercent ?? 0}%`,
-            background: 'var(--primary)',
-            height: '100%'
-          }} />
+<div className="progress-bar-wrapper">
+<div className="progress-bar-fill" style={{ width: `${milestone?.progressPercent ?? 0}%` }} />
         </div>
-        <div style={{ marginTop: 10 }}>
+        <div className="milestone-button-container">
           <button className="btn">View Achievements</button>
         </div>
       </div>

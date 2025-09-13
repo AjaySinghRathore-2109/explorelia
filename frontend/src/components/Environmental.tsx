@@ -11,8 +11,10 @@ const Environmental: React.FC = () => {
   const [env, setEnv] = useState<EnvironmentalType | null>(null)
   const [loading, setLoading] = useState(true)
 
+  const location = "jaipur"
   useEffect(() => {
-    axios.get('/api/environmental?location=jaipur').then(res => {
+    axios.get(`/api/environmental?location=${location}`).then(res => {
+      console.log("Test Environmental Component Data" + res.data)
       setEnv(res.data)
     }).finally(() => setLoading(false))
   }, [])

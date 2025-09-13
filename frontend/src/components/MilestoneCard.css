@@ -1,0 +1,30 @@
+.milestone-section {
+  margin-top: 28px !important;
+}
+
+.milestone-title {
+  margin-top: 8px;
+}
+
+.milestone-description {
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.progress-bar-wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  height: 10px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: var(--primary);
+  height: 100%;
+}
+
+.milestone-button-container {
+  margin-top: 10px;
+}
