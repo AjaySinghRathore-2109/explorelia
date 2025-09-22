@@ -1,7 +1,6 @@
 import React from 'react'
-import ThemeToggle from './theme/ThemeToggle';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container navbar-inner">
@@ -19,7 +18,6 @@ const Navbar: React.FC = () => {
         <div>
           <button className="btn">Sign In</button>
         </div>
-        <ThemeToggle/>
       </div>
     </nav>
   )

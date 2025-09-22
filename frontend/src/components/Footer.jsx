@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer: React.FC = () => (
+const Footer = () => (
   <footer className="footer container">
     © Jaipur Smart Guide
   </footer>
