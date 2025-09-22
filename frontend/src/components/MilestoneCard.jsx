@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react'
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import axios from 'axios'
 import './MilestoneCard.css';
 
-type MilestoneType = {
-  title: string
-  description: string
-  progressPercent: number
-}
-
-const MilestoneCard: React.FC = () => {
-  const [milestone, setMilestone] = useState<MilestoneType | null>(null)
+const MilestoneCard = () => {
+  const [milestone, setMilestone] = useState(null)
 
   useEffect(() => {
     axios.get('/api/user/1/milestones').then(res => {

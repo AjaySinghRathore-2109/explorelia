@@ -1,7 +1,7 @@
 import React from 'react'
-import ThemeToggle from './theme/ThemeToggle';
+import ThemeToggle from './theme/ThemeToggle.jsx';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container navbar-inner">

@@ -1,15 +1,15 @@
 import React from 'react'
 
 // Importing the components that were extracted to separate files
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Recommendations from './components/Recommendations'
-import Environmental from './components/Environmental'
-import MilestoneCard from './components/MilestoneCard'
-import Footer from './components/Footer'
-import { ThemeProvider } from './components/theme/ThemeContext';
+import Navbar from './components/Navbar.jsx'
+import Hero from './components/Hero.jsx'
+import Recommendations from './components/Recommendations.jsx'
+import Environmental from './components/Environmental.jsx'
+import MilestoneCard from './components/MilestoneCard.jsx'
+import Footer from './components/Footer.jsx'
+import { ThemeProvider } from './components/theme/ThemeContext.jsx';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <ThemeProvider>
       <Navbar />

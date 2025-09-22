@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-type EnvironmentalType = {
-  aqi: number
-  tempC: number
-  weather: string
-}
-
-const Environmental: React.FC = () => {
-  const [env, setEnv] = useState<EnvironmentalType | null>(null)
+const Environmental = () => {
+  const [env, setEnv] = useState(null)
   const [loading, setLoading] = useState(true)
 
   const location = "jaipur"

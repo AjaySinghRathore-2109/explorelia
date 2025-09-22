@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Hero: React.FC<{ onPlan: () => void; onExploreEnv: () => void }> = ({ onPlan, onExploreEnv }) => {
+const Hero = ({ onPlan, onExploreEnv }) => {
   const [query, setQuery] = useState('')
   return (
     <section className="container hero">

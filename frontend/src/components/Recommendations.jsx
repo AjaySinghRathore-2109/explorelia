@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-type RecommendationType = {
-  id: string
-  title: string
-  image: string
-  description: string
-  rating: number
-}
-
-const Recommendations: React.FC = () => {
-  const [items, setItems] = useState<RecommendationType[]>([])
+const Recommendations = () => {
+  const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
