@@ -1,16 +1,36 @@
 :root {
-    --bg: #ffffff;
-    --surface: #f7f7f9;
-    --text: #17202a;
-    --muted: #5f6b7a;
-    --primary: #cc3366; /* Jaipur-inspired accent */
+    --bg: #fffaf5; /* Light sandstone */
+    --surface: #f5e9dc; /* Warm beige */
+    --text: #5d4037; /* Brown */
+    --muted: #8d6e63; /* Muted brown */
+    --primary: #d8702d; /* Terracotta - Jaipur heritage color */
     --primary-contrast: #ffffff;
     --card: #ffffff;
-    --border: #e6e8ed;
-    --shadow: 0 6px 20px rgba(23, 32, 42, 0.06);
+    --border: #d7ccc8; /* Light terracotta */
+    --shadow: 0 6px 20px rgba(93, 64, 55, 0.15);
+  }
+  
+  .dark {
+    --bg: #1a1826; /* Deep purple */
+    --surface: #2d2a3d; /* Rich purple */
+    --text: #f8f6ff; /* Light purple-white */
+    --muted: #b0a8cc; /* Muted purple */
+    --primary: #e99d58; /* Golden - Jaipur palace color */
+    --primary-contrast: #ffffff;
+    --card: #252236; /* Card purple */
+    --border: #5c567a; /* Border purple */
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   }
   
   * { box-sizing: border-box; }
+  
+  /* Theme toggle button */
+  .theme-toggle {
+    margin-right: 10px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
   html, body, #root { height: 100%; }
   body {
     margin: 0;
@@ -180,4 +200,3 @@
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; }
   }
-  

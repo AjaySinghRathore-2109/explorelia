@@ -5,7 +5,7 @@ const Hero = ({ onPlan, onExploreEnv }) => {
   return (
     <section className="container hero">
       <div className="hero-card">
-        <h1 className="hero-title">Discover Jaipur Smartly</h1>
+        <h1 className="hero-title">Discover City Smartly</h1>
         <p className="hero-sub">
           AI-powered recommendations with real-time environmental insights for sustainable, delightful trips.
         </p>
