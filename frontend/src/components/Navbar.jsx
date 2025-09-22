@@ -1,5 +1,4 @@
 import React from 'react'
-import ThemeToggle from './theme/ThemeToggle.jsx';
 
 const Navbar = () => {
   return (
@@ -19,7 +18,6 @@ const Navbar = () => {
         <div>
           <button className="btn">Sign In</button>
         </div>
-        <ThemeToggle/>
       </div>
     </nav>
   )

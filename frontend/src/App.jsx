@@ -7,11 +7,10 @@ import Recommendations from './components/Recommendations.jsx'
 import Environmental from './components/Environmental.jsx'
 import MilestoneCard from './components/MilestoneCard.jsx'
 import Footer from './components/Footer.jsx'
-import { ThemeProvider } from './components/theme/ThemeContext.jsx';
 
 const App = () => {
   return (
-    <ThemeProvider>
+    <>
       <Navbar />
       <Hero onPlan={() => alert('Smart Planner (coming soon)')} onExploreEnv={() => {
         const el = document.querySelector('#env-snap')
@@ -22,7 +21,7 @@ const App = () => {
       <Recommendations />
       <MilestoneCard />
       <Footer />
-    </ThemeProvider>
+    </>
   )
 }
 
