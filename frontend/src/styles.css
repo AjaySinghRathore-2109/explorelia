@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* stylelint-disable at-rule-no-unknown */
+@source "./index.html";
+@source "./src/**/*.{js,jsx,ts,tsx}";
+/* stylelint-enable at-rule-no-unknown */
 
 /* Theme variables are now handled by Tailwind CSS configuration */
 /* Only keeping essential global styles */

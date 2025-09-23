@@ -8,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#d8702d", // Terracotta - Jaipur heritage color
-        "primary-dark": "#e99d58", // Golden - Jaipur palace color
-        "background-light": "#fffaf5", // Light sandstone
-        "background-dark": "#1a1826", // Deep purple
+        // Synced with previous inline CDN config
+        primary: "#10b774",
+        "background-light": "#f6f8f7",
+        "background-dark": "#10221b",
         "surface-light": "#f5e9dc", // Warm beige
         "surface-dark": "#2d2a3d", // Rich purple
         "text-light": "#5d4037", // Brown
