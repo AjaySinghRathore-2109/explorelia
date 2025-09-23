@@ -1,56 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react';
 
-const Hero = ({ onPlan, onExploreEnv }) => {
-  const [query, setQuery] = useState('')
+const Hero = () => {
   return (
-    <section className="container hero">
-      <div className="hero-card">
-        <h1 className="hero-title">Discover City Smartly</h1>
-        <p className="hero-sub">
-          AI-powered recommendations with real-time environmental insights for sustainable, delightful trips.
-        </p>
-        <div className="search">
-          <input
-            placeholder="Search attractions, hotels, restaurants…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className="btn primary" onClick={() => alert(`Search: ${query}`)}>Search</button>
-        </div>
-        <div style={{ marginTop: 16, display: 'flex', gap: 10 }}>
-          <button className="btn primary" onClick={onPlan}>Plan My Smart Trip</button>
-          <button className="btn" onClick={onExploreEnv}>Explore Environmental Insights</button>
+    <div className="relative min-h-[60vh] flex items-center justify-center text-white">
+      <video autoPlay className="absolute inset-0 w-full h-full object-cover" loop muted playsInline>
+        <source src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs1AeK79zbrPan4MG7GCdxSbRFclAzPPTcaIA6ioHCEmK5L0mh-kQqePrsKsppRxvLG7n5IyPY0BKDqPZ-IYd-ThejK8ZBVvqJK40f2N_rOVyc64TDa7SJHXzlYdx5GFhprA0P6SrOK1Phfo_JAiaaLeFKYUIoY8QNB0UCB_7xP4xtLzNYquGtsa9UfWhMljGD24f7sUGC7zeT30JzJ27gD71MNp7gndwzTKvvHy4JmoEbMj5Gr9oYp8ir0peTaiurMFhnCLQf5yg" type="video/mp4"/>
+      </video>
+      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="relative z-10 flex flex-col items-center gap-6 text-center px-4">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Explore the Soul of India</h1>
+        <p className="max-w-2xl text-lg md:text-xl font-light">Discover the diverse landscapes, rich cultures, and timeless traditions of India. Your journey begins here.</p>
+        <div className="w-full max-w-2xl mt-4">
+          <form className="flex items-center bg-white rounded-lg shadow-lg overflow-hidden">
+            <span className="material-symbols-outlined text-gray-500 pl-4">search</span>
+            <input className="form-input w-full flex-1 border-0 focus:ring-0 text-gray-800 placeholder:text-gray-500 py-4 px-4" placeholder="Where to? e.g., 'Kerala backwaters' or 'Himalayan peaks'" value=""/>
+            <button className="bg-primary text-white font-bold py-4 px-8 self-stretch hover:bg-primary/90 transition-colors">Search</button>
+          </form>
         </div>
       </div>
+    </div>
+  );
+};
 
-      <div className="grid" style={{ gap: 14 }}>
-        <div className="kpis">
-          <div className="kpi">
-            <div className="badge">Crowd</div>
-            <div style={{ fontSize: 22, fontWeight: 700, marginTop: 6 }}>Moderate</div>
-            <div style={{ color: 'var(--muted)', fontSize: 13 }}>Popular spots manageable</div>
-          </div>
-          <div className="kpi">
-            <div className="badge">AQI</div>
-            <div style={{ fontSize: 22, fontWeight: 700, marginTop: 6 }}>Good</div>
-            <div style={{ color: 'var(--muted)', fontSize: 13 }}>Favorable for outdoor visits</div>
-          </div>
-          <div className="kpi">
-            <div className="badge">Weather</div>
-            <div style={{ fontSize: 22, fontWeight: 700, marginTop: 6 }}>Sunny</div>
-            <div style={{ color: 'var(--muted)', fontSize: 13 }}>Hydrate & plan mid‑day breaks</div>
-          </div>
-        </div>
-
-        <div className="card">
-          <h4 style={{ marginTop: 0 }}>Why this guide?</h4>
-          <p style={{ color: 'var(--muted)' }}>
-            Personalized suggestions, eco‑tips, and route planning that balance traffic, AQI, weather, and attraction hours.
-          </p>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-export default Hero
+export default Hero;

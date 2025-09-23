@@ -11,5 +11,8 @@ export default defineConfig({
         // no rewrite needed if Flask routes already start with /api
       }
     }
+  },
+  css: {
+    postcss: './postcss.config.cjs'
   }
 })

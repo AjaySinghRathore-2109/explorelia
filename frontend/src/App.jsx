@@ -1,35 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-// Importing the components that were extracted to separate files
-import Navbar from './components/Navbar.jsx'
-import Hero from './components/Hero.jsx'
-import Recommendations from './components/Recommendations.jsx'
-import Environmental from './components/Environmental.jsx'
-import MilestoneCard from './components/MilestoneCard.jsx'
-import Footer from './components/Footer.jsx'
-import { useTheme } from './context/ThemeContext.jsx'
+import Navbar from './components/Navbar.jsx';
+import Hero from './components/Hero.jsx';
+import Categories from './components/Categories.jsx';
+import Destinations from './components/Destinations.jsx';
+import SpecialOffers from './components/SpecialOffers.jsx';
+import InteractiveMap from './components/InteractiveMap.jsx';
+import BookNowButton from './components/BookNowButton.jsx';
+import Footer from './components/Footer.jsx';
 
 const App = () => {
-  const { theme } = useTheme()
-
-  useEffect(() => {
-    document.body.className = theme
-  }, [theme])
 
   return (
-    <>
-      <Navbar />
-      <Hero onPlan={() => alert('Smart Planner (coming soon)')} onExploreEnv={() => {
-        const el = document.querySelector('#env-snap')
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }} />
-      <div id="env-snap" />
-      <Environmental />
-      <Recommendations />
-      <MilestoneCard />
-      <Footer />
-    </>
-  )
-}
+    <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+      <div className="layout-container flex h-full grow flex-col">
+        <Navbar />
+        <main className="flex-1">
+          <Hero />
+          <Categories />
+          <Destinations />
+          <SpecialOffers />
+          <InteractiveMap />
+        </main>
+        <BookNowButton />
+        <Footer />
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;
