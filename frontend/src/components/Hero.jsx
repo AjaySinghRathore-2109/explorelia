@@ -11,7 +11,7 @@ const Hero = () => {
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Explore the Soul of India</h1>
         <p className="max-w-2xl text-lg md:text-xl font-light">Discover the diverse landscapes, rich cultures, and timeless traditions of India. Your journey begins here.</p>
         <div className="w-full max-w-2xl mt-4">
-          <form className="flex items-center bg-white rounded-lg shadow-lg overflow-hidden">
+          <form className="flex items-center bg-white rounded-2xl shadow-lg overflow-hidden">
             <span className="material-symbols-outlined text-gray-500 pl-4">search</span>
             <input className="form-input w-full flex-1 border-0 focus:ring-0 text-gray-800 placeholder:text-gray-500 py-4 px-4" placeholder="Where to? e.g., 'Kerala backwaters' or 'Himalayan peaks'" value=""/>
             <button className="bg-primary text-white font-bold py-4 px-8 self-stretch hover:bg-primary/90 transition-colors">Search</button>
