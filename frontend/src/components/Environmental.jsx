@@ -14,29 +14,41 @@ const Environmental = () => {
   }, [])
 
   return (
-    <section className="container" style={{ marginTop: 28 }}>
-      <h3 style={{ marginBottom: 12 }}>Environmental Snapshot</h3>
-      <div className="kpis">
-        <div className="kpi">
-          <div className="badge">AQI</div>
-          <div style={{ fontSize: 22, fontWeight: 700, marginTop: 6 }}>
+    <section className="max-w-[1180px] mx-auto px-4 mt-7">
+      <h3 className="mb-3">Environmental Snapshot</h3>
+      <div className="grid grid-cols-3 gap-3.5">
+        <div className="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-3.5">
+          <div className="inline-block px-2.5 py-1.5 rounded-full text-xs font-semibold bg-primary/16 text-primary border border-primary/34">
+            AQI
+          </div>
+          <div className="text-[22px] font-bold mt-1.5 mb-0">
             {loading ? '—' : env?.aqi}
           </div>
-          <div style={{ color: 'var(--muted)', fontSize: 13 }}>Air Quality Index</div>
+          <div className="text-muted-light dark:text-muted-dark text-xs">
+            Air Quality Index
+          </div>
         </div>
-        <div className="kpi">
-          <div className="badge">Temp</div>
-          <div style={{ fontSize: 22, fontWeight: 700, marginTop: 6 }}>
+        <div className="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-3.5">
+          <div className="inline-block px-2.5 py-1.5 rounded-full text-xs font-semibold bg-primary/16 text-primary border border-primary/34">
+            Temp
+          </div>
+          <div className="text-[22px] font-bold mt-1.5 mb-0">
             {loading ? '—' : `${env?.tempC}°C`}
           </div>
-          <div style={{ color: 'var(--muted)', fontSize: 13 }}>Current temperature</div>
+          <div className="text-muted-light dark:text-muted-dark text-xs">
+            Current temperature
+          </div>
         </div>
-        <div className="kpi">
-          <div className="badge">Weather</div>
-          <div style={{ fontSize: 22, fontWeight: 700, marginTop: 6 }}>
+        <div className="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-3.5">
+          <div className="inline-block px-2.5 py-1.5 rounded-full text-xs font-semibold bg-primary/16 text-primary border border-primary/34">
+            Weather
+          </div>
+          <div className="text-[22px] font-bold mt-1.5 mb-0">
             {loading ? '—' : env?.weather}
           </div>
-          <div style={{ color: 'var(--muted)', fontSize: 13 }}>Conditions</div>
+          <div className="text-muted-light dark:text-muted-dark text-xs">
+            Conditions
+          </div>
         </div>
       </div>
     </section>
