@@ -1,6 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaSearch } from "react-icons/fa";
+import "./SearchBar.css";
+import { SearchResultsList } from './SearchResultsList.jsx';
+import axios from 'axios';
 
-const Hero = () => {
+const Hero = ({ setResults }) => {
+  const [input, setInput] = useState("");
+  const [results, setResultsLocal] = useState([]);
+  const [allPlaces, setAllPlaces] = useState([]);
+  
+  
+  useEffect(() => {
+    fetch(`/api/search`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success && data.pids) {
+          setAllPlaces(data.pids);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  const fetchData = (value) => {
+    const filteredResults = allPlaces.filter((pid) => {
+      return value && pid && pid.toLowerCase().includes(value.toLowerCase());
+    });
+    setResults(filteredResults);
+    setResultsLocal(filteredResults);
+  };
+
+  const handleChange = (value) => {
+    setInput(value);
+    fetchData(value);
+  };
+
   return (
     <div className="relative min-h-[60vh] flex items-center justify-center text-white">
       <video autoPlay className="absolute inset-0 w-full h-full object-cover" loop muted playsInline>
@@ -10,13 +46,15 @@ const Hero = () => {
       <div className="relative z-10 flex flex-col items-center gap-6 text-center px-4">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Explore the Soul of India</h1>
         <p className="max-w-2xl text-lg md:text-xl font-light">Discover the diverse landscapes, rich cultures, and timeless traditions of India. Your journey begins here.</p>
-        <div className="w-full max-w-2xl mt-4">
-          <form className="flex items-center bg-white rounded-2xl shadow-lg overflow-hidden">
-            <span className="material-symbols-outlined text-gray-500 pl-4">search</span>
-            <input className="form-input w-full flex-1 border-0 focus:ring-0 text-gray-800 placeholder:text-gray-500 py-4 px-4" placeholder="Where to? e.g., 'Kerala backwaters' or 'Himalayan peaks'" value=""/>
-            <button className="bg-primary text-white font-bold py-4 px-8 self-stretch hover:bg-primary/90 transition-colors">Search</button>
-          </form>
-        </div>
+ 
+          <div className='input-wrapper'>
+            <FaSearch id="search-icon" />
+            <input placeholder="Where to? e.g., 'Kerala backwaters' or 'Himalayan peaks'" 
+            value={input}
+            onChange={(e) => handleChange(e.target.value)} />
+          </div>
+          {results.length > 0 && <SearchResultsList results={results} />}
+          
       </div>
     </div>
   );

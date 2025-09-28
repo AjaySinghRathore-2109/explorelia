@@ -1,5 +1,8 @@
+import re
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+import psycopg2
+import logging
 
 app = Flask(__name__)
 # Allow all origins for dev; tighten in production
@@ -62,6 +65,58 @@ def get_recommendations():
         "items": RECOMMENDATIONS
     })
 
+
+DB_CONFIG = {
+    'database': 'postgres',
+    'user': 'postgres', 
+    'password': 'schooldb',
+    'host': 'localhost',
+    'port': '5432'
+}
+
+@app.get("/api/search")
+def search_by_key():
+
+    print("Search Start")
+
+    try:
+        # connect to database
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
+         
+        # Fetching values from database
+        cur.execute("SELECT pois FROM Places")
+        results = cur.fetchall()
+
+        # Closing server after data Extraction
+        cur.close()
+        conn.close()
+
+        
+        # Give final result
+        if results:
+            # Extract all place IDs from the list of tuples
+            place_ids = [result[0] for result in results]
+            print(place_ids)
+            return jsonify({
+                'success': True,
+                'pids': place_ids
+            })
+
+        else:
+            return jsonify({
+                'success': False,
+                'message': 'No data found for key'
+            })
+
+    # Error handling by showing status
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e) 
+        }), 500
+
+
 @app.get("/api/environmental")
 def get_environmental():
     """
@@ -90,6 +145,7 @@ def get_environmental():
         return jsonify({"error": "Unexpected error", "details": str(e)}), 500
 
 
+
 @app.get("/api/user/<user_id>/milestones")
 def get_user_milestones(user_id):
     return jsonify({
@@ -100,6 +156,7 @@ def get_user_milestones(user_id):
             "progressPercent": 62
         }
     })
+
 
 if __name__ == "__main__":
     # Run Flask for local dev

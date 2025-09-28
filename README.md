@@ -32,10 +32,10 @@ BackEnd Local Server Setup steps :
      cd backend
 
   2. Setup virtual environment using following bash commands
-     python3 -m venv venv
+     py -m venv venv
 
   3. Activate virtual environment
-     source venv/bin/activate
+     source venv/scripts/activate
 
      (run deactivate to deactivate the virtual environment)
 

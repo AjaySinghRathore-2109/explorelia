@@ -10,13 +10,14 @@ import BookNowButton from './components/BookNowButton.jsx';
 import Footer from './components/Footer.jsx';
 
 const App = () => {
+  const [results, setResults] = useState([]);
 
   return (
     <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
       <div className="layout-container flex h-full grow flex-col">
         <Navbar />
         <main className="flex-1">
-          <Hero />
+          <Hero  setResults={setResults}/>
           <Categories />
           <Destinations />
           <SpecialOffers />
