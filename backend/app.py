@@ -69,23 +69,20 @@ def get_recommendations():
 DB_CONFIG = {
     'database': 'postgres',
     'user': 'postgres', 
-    'password': 'schooldb',
+    'password': 'tourguide',
     'host': 'localhost',
-    'port': '5432'
+    'port': '5433'
 }
 
 @app.get("/api/search")
 def search_by_key():
 
-    print("Search Start")
-
     try:
         # connect to database
         conn = psycopg2.connect(**DB_CONFIG)
         cur = conn.cursor()
-         
         # Fetching values from database
-        cur.execute("SELECT pois FROM Places")
+        cur.execute("SELECT cities FROM indian_cities")
         results = cur.fetchall()
 
         # Closing server after data Extraction
@@ -97,7 +94,6 @@ def search_by_key():
         if results:
             # Extract all place IDs from the list of tuples
             place_ids = [result[0] for result in results]
-            print(place_ids)
             return jsonify({
                 'success': True,
                 'pids': place_ids

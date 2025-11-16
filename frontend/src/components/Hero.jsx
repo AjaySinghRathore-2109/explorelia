@@ -26,7 +26,7 @@ const Hero = ({ setResults }) => {
 
   const fetchData = (value) => {
     const filteredResults = allPlaces.filter((pid) => {
-      return value && pid && pid.toLowerCase().includes(value.toLowerCase());
+      return value && pid && pid.toLowerCase().startsWith(value.toLowerCase());
     });
     setResults(filteredResults);
     setResultsLocal(filteredResults);
